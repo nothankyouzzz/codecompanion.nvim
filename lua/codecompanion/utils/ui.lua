@@ -56,6 +56,7 @@ M.create_float = function(lines, opts)
   end
 
   local function close()
+    api.nvim_win_close(winnr, true)
     api.nvim_buf_delete(bufnr, { force = true })
   end
 
