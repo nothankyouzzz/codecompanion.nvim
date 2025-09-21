@@ -125,7 +125,10 @@ M.create_float = function(lines, opts)
   end
 
   local function close()
-    api.nvim_buf_delete(bufnr, { force = true })
+    api.nvim_win_close(winnr, true)
+    if api.nvim_buf_is_valid(bufnr) then
+      api.nvim_buf_delete(bufnr, { force = true })
+    end
   end
 
   vim.keymap.set("n", "q", close, { buffer = bufnr })
